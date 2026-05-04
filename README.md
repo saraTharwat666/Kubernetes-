@@ -1,6 +1,5 @@
 # ☸️ Kubernetes (K8s) Ultimate Cheat Sheet & Labs
-![Kubernetes Architecture](<img width="1354" height="768" alt="image" src="https://github.com/user-attachments/assets/d86304f4-c34b-4271-8832-e617973a0157" />
-)
+![Kubernetes Architecture](<img width="1354" height="768" alt="image" src="https://github.com/user-attachments/assets/d86304f4-c34b-4271-8832-e617973a0157" />)
 
 > **"Mastering the art of container orchestration, one command at a time."**  
 > This repository serves as a comprehensive guide to Kubernetes essential commands, architecture, and hands-on laboratory exercises.
