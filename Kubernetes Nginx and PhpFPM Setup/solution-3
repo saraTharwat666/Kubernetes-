@@ -1,0 +1,106 @@
+cat <<EOF > nginx.conf
+events {}
+http {
+    server {
+        listen 8094;
+        index index.html index.htm index.php;
+        root /var/www/html;
+        location ~ \.php$ {
+            fastcgi_pass localhost:9000;
+            fastcgi_index index.php;
+            include fastcgi_params;
+            fastcgi_param SCRIPT_FILENAME \$document_root\$fastcgi_script_name;
+        }
+    }
+}
+EOF
+
+kubectl create configmap nginx-config --from-file=nginx.conf
+
+#####################################################################################################
+
+# Create pod.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-phpfpm
+  labels:
+    app: php-app
+spec:
+  volumes:
+  - name: shared-files
+    emptyDir: {}
+  - name: nginx-config-volume
+    configMap:
+      name: nginx-config
+      items:
+      - key: nginx.conf
+        path: nginx.conf
+  containers:
+  - name: nginx-container
+    image: nginx:latest
+    volumeMounts:
+    - name: shared-files
+      mountPath: /var/www/html
+    - name: nginx-config-volume
+      mountPath: /etc/nginx/nginx.conf
+      subPath: nginx.conf
+  - name: php-fpm-container
+    image: php:8.2-fpm-alpine
+    volumeMounts:
+    - name: shared-files
+      mountPath: /var/www/html
+
+
+:wq!
+kubectl apply -f pod.yaml
+#####################################################################################################
+
+# create service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: php-svc
+spec:
+  type: NodePort
+  selector:
+    app: php-app
+  ports:
+    - port: 8094
+      targetPort: 8094
+      nodePort: 30012
+    :wq
+
+    kubectl apply -f service.yaml
+    
+#####################################################################################################
+
+kubectl cp /opt/index.php nginx-phpfpm:/var/www/html/ -c nginx-container
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
