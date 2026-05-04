@@ -1,5 +1,5 @@
 # ☸️ Kubernetes (K8s) Ultimate Cheat Sheet & Labs
-![Kubernetes Architecture](https://www.kerno.io/blog/kubernetes-services)
+![Kubernetes Architecture](https://sookocheff.com/post/kubernetes/understanding-kubernetes-networking-model/)
 
 > **"Mastering the art of container orchestration, one command at a time."**  
 > This repository serves as a comprehensive guide to Kubernetes essential commands, architecture, and hands-on laboratory exercises.
