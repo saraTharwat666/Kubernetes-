@@ -1,65 +1,53 @@
-# ☸️ The Kubernetes Mastery Lab
-![Kubernetes Banner](https://raw.githubusercontent.com/kubernetes/kubernetes/master/logo/logo.png)
+# ☸️ Kubernetes (K8s) Ultimate Cheat Sheet & Labs
+![Kubernetes Architecture](https://www.youtube.com/post/UgkxX6erLOjtu7DNHxCpHopvJQwjmk-tO9C-)
 
-> **"Infrastructure is code, and code is a journey."**  
-> This repository is a living documentation of my journey through the Kubernetes ecosystem—from basic pod orchestration to complex cloud-native architectures.
-
----
-
-## 📽️ Deployment in Action
-![K8s Deployment GIF](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJueXN4Z3ZqbmZ4Z3ZqbmZ4Z3ZqbmZ4Z3ZqbmZ4Z3ZqJmVwPXYxX2ludGVybmFsX2dpZl9ieV9iZCBmcm9tX2dpcGh5/3o7TKMGpxxy6L_7S0w/giphy.gif)
+> **"Mastering the art of container orchestration, one command at a time."**  
+> This repository serves as a comprehensive guide to Kubernetes essential commands, architecture, and hands-on laboratory exercises.
 
 ---
 
-## 🗺️ Roadmap & Progress
-I am following a structured path to master K8s. Here is where I stand:
+## 🖼️ K8s Visual Overview
 
-- [x] **Phase 1: Core Concepts** (Pods, ReplicaSets, Deployments)
-- [x] **Phase 2: Networking & Services** (ClusterIP, NodePort, LoadBalancer)
-- [x] **Phase 3: Storage & Persistence** (PV, PVC, StorageClasses)
-- [ ] **Phase 4: Advanced Configuration** (ConfigMaps, Secrets, Ingress)
-- [ ] **Phase 5: Package Management** (Helm Charts)
-- [ ] **Phase 6: Observability** (Prometheus & Grafana)
 
 ---
 
-## 📂 Laboratory Index
-Below is a categorized list of all scenarios implemented in this cluster:
+## 🛠️ Essential Kubectl Commands (The Core)
 
-### 🏛️ Architecture & Workloads
-| Lab Name | Description | Tools Used |
-| :--- | :--- | :--- |
-| [Guestbook App](./Guestbook-App) | Multi-tier Redis Master-Slave application. | Redis, PHP, NodePort |
-| [Nginx Sidecar](./Nginx-Sidecar) | Implementing the Sidecar pattern for PHP-FPM. | Shared Volumes, ConfigMaps |
+### 🔍 1. Exploration & Troubleshooting
+| Command | Description |
+| :--- | :--- |
+| `kubectl get all` | Show all resources in the current namespace. |
+| `kubectl describe pod <pod-name>` | Show detailed information about a specific pod (Events/Logs). |
+| `kubectl logs <pod-name>` | Display logs from a container in a pod. |
+| `kubectl exec -it <pod-name> -- bin/bash` | Open an interactive terminal inside a pod. |
 
-### 💾 Data & Storage
-| Lab Name | Description | Status |
-| :--- | :--- | :--- |
-| [Drupal-MySQL](./Drupal-MySQL) | Persistent CMS deployment with PV/PVC. | ✅ Completed |
-| [Storage Policies](./Storage) | Testing different AccessModes (RWO, RWX). | ⏳ In Progress |
+### 🚀 2. Resource Management
+| Command | Description |
+| :--- | :--- |
+| `kubectl apply -f <file.yaml>` | Create or update resources defined in a YAML file. |
+| `kubectl run <name> --image=<image>` | Create a temporary pod for testing. |
+| `kubectl scale deployment <name> --replicas=5` | Scale a deployment to a specific number of pods. |
+| `kubectl delete -f <file.yaml>` | Remove all resources defined in the YAML file. |
+
+### 🌐 3. Networking & Services
+| Command | Description |
+| :--- | :--- |
+| `kubectl get svc` | List all services and their external/internal IPs. |
+| `kubectl expose deployment <name> --port=80 --type=NodePort` | Expose a deployment to external traffic. |
+| `kubectl port-forward <pod-name> 8080:80` | Forward a local port to a port on the pod. |
 
 ---
 
-## 🛠️ My DevOps Toolbox
-- **Orchestration:** Kubernetes (K8s)
-- **Scripting:** Bash, YAML
-- **Cloud Providers:** Azure, AWS
-- **Version Control:** Git & GitHub
+## 📁 Repository Roadmap
+- [x] **Basics:** Pods, Deployments, and Services.
+- [x] **Storage:** Persistent Volumes (PV) and Claims (PVC).
+- [ ] **Config:** Secrets, ConfigMaps, and Resource Quotas.
+- [ ] **Advanced:** Helm Charts, Ingress Controllers, and Monitoring.
 
 ---
 
-## 📜 How to Use This Repo
-1. **Clone the repository:**
-   ```bash
-   git clone [https://github.com/YourUsername/k8s-labs.git](https://github.com/YourUsername/k8s-labs.git)
-   ```
-
-Navigate to a specific lab:
-
-```Bash
-cd MySQL-Drupal
-```
-Apply the manifests:
-```Bash
-kubectl apply -f
-```
+## ⚡ Quick DevOps Alias
+To speed up your workflow, add this to your `.bashrc` or run it in your terminal:
+```bash
+alias k='kubectl'
+complete -F __start_kubectl k
