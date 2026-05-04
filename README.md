@@ -1,5 +1,5 @@
 # ☸️ Kubernetes (K8s) Ultimate Cheat Sheet & Labs
-![Kubernetes Architecture](https://sookocheff.com/post/kubernetes/understanding-kubernetes-networking-model/)
+![Kubernetes Architecture](https://sookocheff.com/post/kubernetes/understanding-kubernetes-networking-model/internet-to-service.gif)
 
 > **"Mastering the art of container orchestration, one command at a time."**  
 > This repository serves as a comprehensive guide to Kubernetes essential commands, architecture, and hands-on laboratory exercises.
