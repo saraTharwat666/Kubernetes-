@@ -6,9 +6,6 @@
 
 ---
 
-## 🖼️ K8s Visual Overview
-
-
 ---
 
 ## 🛠️ Essential Kubectl Commands (The Core)
