@@ -1,0 +1,6 @@
+# We already have a secret key file official.txt under the /opt/ directory. Create a generic secret named official, it should contain the password/license-number present in official.txt file.
+kubectl create secret generic official --from-file=/opt/official.txt
+
+#############################################################################################################################################
+
+# create a pod named secret-nautilus. secret-pod.yaml
