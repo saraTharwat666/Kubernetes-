@@ -4,3 +4,25 @@ kubectl create secret generic official --from-file=/opt/official.txt
 #############################################################################################################################################
 
 # create a pod named secret-nautilus. secret-pod.yaml
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: secret-nautilus
+spec:
+  containers:
+  - name: secret-container-nautilus
+    image: debian:latest
+    command: ["/bin/bash", "-c", "sleep 3600"]
+    volumeMounts:
+    - name: secret-volume
+      mountPath: "/opt/cluster"
+      readOnly: true
+  volumes:
+  - name: secret-volume
+    secret:
+      secretName: official
+:wq!
+kubectl apply -f secret-pod.yaml
+##########################################################################################################################
+kubectl exec -it secret-nautilus -c secret-container-nautilus -- cat /opt/cluster/official.txt
